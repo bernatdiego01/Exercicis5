@@ -1,29 +1,29 @@
-package com.example.ejercici7;
+package com.example.ejercici9;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import java.util.Date;
-import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    Button btn;
+import android.os.Bundle;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+
+public class MainActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
+    CheckBox cb;
     @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btn=(Button)findViewById(R.id.button);
-        btn.setOnClickListener(this);
-        updateTime();
+        cb = (CheckBox) findViewById(R.id.check);
+        cb.setOnCheckedChangeListener(this);
     }
-    public void onClick(View view) {
-        updateTime();
-    }
-    private void updateTime() {
-        btn.setText(new Date().toString());
-    }
+    public void onCheckedChanged(CompoundButton buttonView,
+                                 boolean isChecked) {
+        if (isChecked) {
+            cb.setText("This checkbox is: checked");
+        }
+        else {
+            cb.setText("This checkbox is: unchecked");
+        }
 
-
+    }
 }
